@@ -109,7 +109,9 @@ background-color: #f4f4f4;
 <body>
     <div class="container">
         <h1>Caitie B's Code Snippet Library</h1>
-<p>The browser I use is Chrome. The extension I use is <a href="https://chromewebstore.google.com/detail/user-javascript-and-css/nbhcbdghjpllgmfilhnhkllmkecfmpld" target="_blank">User JavaScript and CSS</a>. This can likely be replicated in other browsers, but they may not use the same extension. </p><p>Once you install the extension, open it and create a new rule. Name it and give it a URL pattern. Here are some examples of URL patterns (the snippets will only work within the URL environment identified):
+<p>DISCLAIMER: Canvas changes their GUI often and it sometimes leads to the snippets no longer functioning or behaving unexpectedly.The snippet must then be updated to match new Canvas code or removed.</p>
+
+        <p>The browser I use is Chrome. The extension I use is <a href="https://chromewebstore.google.com/detail/user-javascript-and-css/nbhcbdghjpllgmfilhnhkllmkecfmpld" target="_blank">User JavaScript and CSS</a>. This can likely be replicated in other browsers, but they may not use the same extension. </p><p>Once you install the extension, open it and create a new rule. Name it and give it a URL pattern. Here are some examples of URL patterns (the snippets will only work within the URL environment identified):
 </p>
 <ul><li>Walden Production Canvas: https://waldenu.instructure.com/*</li><li>WU Test Canvas: https://waldenu.test.instructure.com/*</li><li>CU Prod Canvas: https://chamberlain.instructure.com/*</li></ul>
 <p>Etc. It is important to include the * at the end!</p>
@@ -163,7 +165,7 @@ background-color: #f4f4f4;
             </div>
 
                     
-            <div class="snippet">
+            <!-- <div class="snippet">
                 <h2>Resize the "Find Rubric" Window</h2>
                 <pre><code class="language-js" id="rubric-resize">
     //resizes rubric search window automatically when using 'find rubric' to attach a rubric to a discussion or assignment
@@ -191,7 +193,7 @@ background-color: #f4f4f4;
     });
                 </code></pre>
                 <button class="copy-button" onclick="copySnippet('rubric-resize')">Copy</button>
-            </div>
+            </div> -->
     
             <div class="snippet">
                 <h2>Edit Shortcut - Assignment or Quiz</h2>
@@ -268,14 +270,28 @@ background-color: #f4f4f4;
     
                 // Step 2: Wait a short moment for the menu to appear, then click the menu item
                 setTimeout(() => {
-                    const menuItem = document.querySelector('#MenuItem__label___12');
-                    if (menuItem) {
-                        menuItem.click();
-                        console.log('Menu item clicked');
-                    } else {
-                        console.log('Menu item not found');
-                    }
-                }, 200); // Adjust delay if needed
+                    // Option 1: Find by class
+                        let menuItem = document.querySelector('.discussion-thread-menuitem-edit');
+                    
+                        // Option 2: Fallback - find by visible text
+                        if (!menuItem) {
+                            const candidates = Array.from(document.querySelectorAll('.css-1jyml41-text, span'));
+                            menuItem = candidates.find(el => el.textContent.trim() === 'Edit');
+                        }
+                    
+                        if (menuItem) {
+                            const clickable = menuItem.closest('[role="menuitem"], button, span');
+                            if (clickable) {
+                                clickable.click();
+                                console.log('Edit menu item clicked');
+                            } else {
+                                console.log('Clickable ancestor not found for Edit');
+                            }
+                        } else {
+                        console.log('Edit menu item not found');
+                        }
+                    }, 200); // Adjust delay if needed
+                            
             } else {
                 console.log('Menu trigger not found');
             }
