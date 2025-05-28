@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Snippet Library</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+    font-size: large;
+    color: rebeccapurple;
+    font-style: italic;
+}
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .snippet {
+            background: #fff;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .snippet pre {
+            margin: 0;
+        }
+        .copy-button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+        }
+        .copy-button:hover {
+            background: #0056b3;
+        }
+
+        .tab-container {
+background: #fff;
+border-radius: 8px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+overflow: hidden;
+max-width: 100%;
+margin: auto;
+}
+
+.tab-header {
+display: flex;
+border-bottom: 1px solid #ddd;
+}
+
+.tab-header button {
+flex: 1;
+padding: 14px 20px;
+background: none;
+border: none;
+cursor: pointer;
+font-weight: 600;
+font-size: large;
+color: #555;
+transition: background 0.3s;
+}
+
+.tab-header button.active {
+border-bottom: 3px solid #0078d4;
+color: #0078d4;
+background-color: #f9f9f9;
+}
+
+.tab-content {
+padding: 20px;
+display: none;
+}
+
+.tab-content.active {
+display: block;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+th, td {
+text-align: left;
+padding: 10px;
+border-bottom: 1px solid #eee;
+}
+
+th {
+background-color: #f4f4f4;
+}
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Caitie B's Code Snippet Library</h1>
+<p>The browser I use is Chrome. The extension I use is <a href="https://chromewebstore.google.com/detail/user-javascript-and-css/nbhcbdghjpllgmfilhnhkllmkecfmpld" target="_blank">User JavaScript and CSS</a>. This can likely be replicated in other browsers, but they may not use the same extension. </p><p>Once you install the extension, open it and create a new rule. Name it and give it a URL pattern. Here are some examples of URL patterns (the snippets will only work within the URL environment identified):
+</p>
+<ul><li>Walden Production Canvas: https://waldenu.instructure.com/*</li><li>WU Test Canvas: https://waldenu.test.instructure.com/*</li><li>CU Prod Canvas: https://chamberlain.instructure.com/*</li></ul>
+<p>Etc. It is important to include the * at the end!</p>
+
+<p>Copy the chunks of code below that you want to use and paste them into the rule editor. JS code should be pasted into the left panel and CSS code should be pasted into the right panel. All code below is JS unless otherwise labeled. At this time, the order does not matter.</p>
+
+<p>Save the rule. Now when you navigate around in Canvas, the snippets should be active. Each rule can be toggled on or off if you want to stop using it temporarily. </p>
+<p>The snippets can be altered if you want to use different shortcut keys, resize windows differently, etc. Please note that when saving a page, assignment, discussion, etc. you must have your mouse focus be outside of the RCE (rich text editor) window. If your cursor is active inside of a text field, the current shortcut keys will insert a special character instead of saving the page.</p>
+
+
+
+
+        <div class="snippet">
+            <h2>RCE Window - Resized (CSS)</h2>
+            <pre><code class="language-css" id="rce-resize">
+/*automatically resizes the RCE window (choose whatever height you want)*/
+.tox.tox-tinymce {
+    height: 800px !important;
+}
+            </code></pre>
+            <button class="copy-button" onclick="copySnippet('rce-resize')">Copy</button>
+        </div>
+            
+            <div class="snippet">
+                <h2>RCE Toolbar - Fully Expanded</h2>
+                <pre><code class="language-js" id="rce-expand">
+    //open the RCE toolbar menu to be fully expanded
+    window.onload = function() {
+        let buttonClicked = false;
+        setTimeout(function() {
+            if (!buttonClicked) {
+                document.querySelector('button[aria-label="More..."]').click();
+                buttonClicked = true;
+            }
+        }, 1500);
+    };
+                </code></pre>
+                <button class="copy-button" onclick="copySnippet('rce-expand')">Copy</button>
+            </div>
+
+
+            <div class="snippet">
+                <h2>Impact Button - Hide Element</h2>
+                <pre><code class="language-js" id="hide-impact">
+    //automatically hides the Impact button
+    setTimeout(window.onload = function(){
+        document.getElementById("expert-build-mode").style.display='none';
+    }, 2500);
+                </code></pre>
+                <button class="copy-button" onclick="copySnippet('hide-impact')">Copy</button>
+            </div>
+
+                    
+            <div class="snippet">
+                <h2>Resize the "Find Rubric" Window</h2>
+                <pre><code class="language-js" id="rubric-resize">
+    //resizes rubric search window automatically when using 'find rubric' to attach a rubric to a discussion or assignment
+    const resizePopup = (popup) => {
+        popup.style.width = '1100px';
+        popup.style.height = '600px';
+        popup.style.maxWidth = 'none'; // Optional: prevent max-width constraints
+        popup.style.maxHeight = 'none'; // Optional: prevent max-height constraints
+        console.log('Popup resized!');
+    };
+    
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            mutation.addedNodes.forEach((node) => {
+                if (node.nodeType === 1 && node.classList.contains('ui-dialog')) {
+                    resizePopup(node);
+                }
+            });
+        });
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+                </code></pre>
+                <button class="copy-button" onclick="copySnippet('rubric-resize')">Copy</button>
+            </div>
+    
+            <div class="snippet">
+                <h2>Edit Shortcut - Assignment or Quiz</h2>
+                <pre><code class="language-js" id="assign-edit">
+    //alt+E shortcut opens assignment for editing
+    document.addEventListener('keydown', function(e) {
+        if (e.altKey && e.code === 'KeyE') {
+            const button = document.querySelector('a.btn.edit_assignment_link');
+            if (button) {
+                button.click();
+            } else {
+                console.log('Edit button not found');
+            }
+        }
+    });
+                </code></pre>
+                <button class="copy-button" onclick="copySnippet('assign-edit')">Copy</button>
+            </div>
+    
+            <div class="snippet">
+                <h2>Save Shortcut - Assignment</h2>
+                <pre><code class="language-js" id="assign-save">
+    //alt+S shortcut saves assignment, MUST be clicked outside of the RCE
+    document.addEventListener('keydown', function(e) {
+        if (e.altKey && e.code === 'KeyS') {
+            const button = document.querySelector('button.btn.btn-primary.submit');
+            if (button) {
+                button.click();
+            } else {
+                console.log('Save button not found');
+            }
+        }
+    });
+                </code></pre>
+                <button class="copy-button" onclick="copySnippet('assign-save')">Copy</button>
+            </div>
+
+    
+            <div class="snippet">
+                <h2>Save Shortcut - Quiz</h2>
+                <pre><code class="language-js" id="quiz-save">
+    //alt+S shortcut saves quiz, MUST be clicked outside of the RCE
+    document.addEventListener('keydown', function(e) {
+        if (e.altKey && e.code === 'KeyS') {
+            const button = document.querySelector('button.save_quiz_button.btn.btn-primary');
+            if (button) {
+                button.click();
+            } else {
+                console.log('Save button not found');
+            }
+        }
+    });
+                </code></pre>
+                <button class="copy-button" onclick="copySnippet('quiz-save')">Copy</button>
+            </div>
+
+            <div class="snippet">
+                <h2>Edit Shortcut - Discussion</h2>
+                <pre><code class="language-js" id="disc-edit">
+    //alt+E shortcut opens kabob menu on discussion page and then clicks edit
+    document.addEventListener('keydown', function(e) {
+        if (e.altKey && e.code === 'KeyE') {
+            const active = document.activeElement;
+    
+            if (active && (active.tagName === 'TEXTAREA' || active.tagName === 'INPUT' || active.isContentEditable)) {
+                active.blur();
+            }
+    
+            // Step 1: Click the menu trigger
+            const menuTrigger = document.querySelector('[data-testid="discussion-post-menu-trigger"]');
+            if (menuTrigger) {
+                menuTrigger.click();
+                console.log('Menu trigger clicked');
+    
+                // Step 2: Wait a short moment for the menu to appear, then click the menu item
+                setTimeout(() => {
+                    const menuItem = document.querySelector('#MenuItem__label___12');
+                    if (menuItem) {
+                        menuItem.click();
+                        console.log('Menu item clicked');
+                    } else {
+                        console.log('Menu item not found');
+                    }
+                }, 200); // Adjust delay if needed
+            } else {
+                console.log('Menu trigger not found');
+            }
+        }
+    });
+                </code></pre>
+                <button class="copy-button" onclick="copySnippet('disc-edit')">Copy</button>
+            </div>
+
+
+        <div class="snippet">
+            <h2>Save Shortcut - Discussion</h2>
+            <pre><code class="language-js" id="disc-save">
+    //alt+S saves the discussion, MUST be clicked outside of the RCE
+    document.addEventListener('keydown', function(e) {
+        if (e.altKey && e.code === 'KeyS') {
+            const button = document.querySelector('[data-testid="save-button"]');
+            if (button) {
+                button.click();
+            } else {
+                console.log('Save button not found');
+            }
+        }
+    });
+            </code></pre>
+            <button class="copy-button" onclick="copySnippet('disc-save')">Copy</button>
+        </div>
+
+        <div class="snippet">
+            <h2>Edit Shortcut - Page</h2>
+            <pre><code class="language-js" id="page-edit">
+    //alt+E shortcut opens page for editing
+    document.addEventListener('keydown', function(e) {
+        if (e.altKey && e.code === 'KeyE') {
+            const button = document.querySelector('a.btn.edit-wiki');
+            if (button) {
+                button.click();
+            } else {
+                console.log('Edit button not found');
+            }
+        }
+    });
+            </code></pre>
+            <button class="copy-button" onclick="copySnippet('page-edit')">Copy</button>
+        </div>
+        <div class="snippet">
+            <h2>Save Shortcut - Page</h2>
+            <pre><code class="language-js" id="page-save">
+                //alt+S shortcut saves page, MUST be clicked outside of the RCE
+    document.addEventListener('keydown', function(e) {
+        if (e.altKey && e.code === 'KeyS') {
+            const button = document.querySelector('button.btn.btn-primary');
+            if (button) {
+                button.click();
+            } else {
+                console.log('Save button not found');
+            }
+        }
+    });
+            </code></pre>
+            <button class="copy-button" onclick="copySnippet('page-save')">Copy</button>
+        </div>
+        <div class="snippet">
+            <h2>TITLE</h2>
+            <pre><code class="language-js" id="xxx">
+enterCode
+            </code></pre>
+            <button class="copy-button" onclick="copySnippet('xxx')">Copy</button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script>
+        function copySnippet(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Copied!");
+            });
+        }
+        function openTab(evt, tabId) {
+const tabs = document.querySelectorAll('.tab-content');
+const links = document.querySelectorAll('.tab-link');
+
+tabs.forEach(tab => tab.classList.remove('active'));
+links.forEach(link => link.classList.remove('active'));
+
+document.getElementById(tabId).classList.add('active');
+evt.currentTarget.classList.add('active');
+}
+    </script>
+    
+</body>
+</html>
