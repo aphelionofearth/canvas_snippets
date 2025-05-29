@@ -355,6 +355,54 @@ background-color: #f4f4f4;
             <button class="copy-button" onclick="copySnippet('page-save')">Copy</button>
         </div>
 
+        <div class="snippet">
+            <h2>Navigate Shortcut - Modules</h2>
+            <pre><code class="language-js" id="modules">
+    //alt+m shortcut to go to Modules area of course
+    document.addEventListener('keydown', function(e) {
+        if (e.altKey && e.code === 'KeyM') {
+            const active = document.activeElement;
+    
+            if (active && (active.tagName === 'TEXTAREA' || active.tagName === 'INPUT' || active.isContentEditable)) {
+                active.blur();
+            }
+    
+            const link = document.getElementById('modules-link');
+            if (link) {
+                link.click();
+            } else {
+                console.log('Modules link not found');
+            }
+        }
+    });
+            </code></pre>
+            <button class="copy-button" onclick="copySnippet('modules')">Copy</button>
+        </div>
+
+        <div class="snippet">
+            <h2>Navigate Shortcut - Settings</h2>
+            <pre><code class="language-js" id="settings">
+    //alt+space shortcut to go to Settings area of course
+    document.addEventListener('keydown', function(e) {
+        if (e.altKey && e.code === 'Space') {
+            const active = document.activeElement;
+    
+            if (active && (active.tagName === 'TEXTAREA' || active.tagName === 'INPUT' || active.isContentEditable)) {
+                active.blur();
+            }
+    
+            const link = document.getElementById('settings-link');
+            if (link) {
+                link.click();
+            } else {
+                console.log('Settings link not found');
+            }
+        }
+    });
+            </code></pre>
+            <button class="copy-button" onclick="copySnippet('settings')">Copy</button>
+        </div>
+
         
         <!-- <div class="snippet">
             <h2>TITLE</h2>
