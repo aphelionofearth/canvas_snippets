@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    background: linear-gradient(to right, #00687F, #ffffff 110%);
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+}
+
+.step-info h2.step {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    color: #fff;
+}
+
+.step-info p.time {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 4px 0 0 0;
+    color: #fff;
+}
+
+.main-content {
+    width: 80%;
+    height: auto;
+    background: linear-gradient(to right, #fff -20%, transparent);
+    border-radius: 8px;
+    padding: 0 10px;
+    margin: 10px 0;
+}
+
+.text-section {
+    flex: 1;
+}
+
+.text-section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.text-section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.pulse-button a {
+    display: inline-block;
+    background-color: #003B4C;
+    color: white;
+    border: 2px solid white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.pulse-button a:hover {
+    transform: scale(1.05);
+    background-color: #008EA9;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+}
+
+.visuals {
+    position: absolute;
+    display: block;
+    right: 30px;
+}
+
+.icon-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-circle img {
+    width: 80px;
+    height: 80px;
+}
+
+.person-image img {
+    display: none;
+}
+
+@media (min-width: 350px) {
+    .icon-circle img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (min-width: 550px) {
+
+    .person-image {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 2;
+        margin: 0;
+        padding: 0;
+    }
+
+    .person-image img {
+        display: block;
+        width: 380px;
+        height: auto;
+        border: none;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+    }
+    .main-content {
+        width: 50%;
+    }
+}
+@media (min-width: 750px) {
+    .main-content {
+        width: 60%;
+    }
+}
