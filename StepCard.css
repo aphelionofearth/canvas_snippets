@@ -8,34 +8,49 @@ body {
     height: 100vh;
 }
 
-.card {
+.wow-card {
     position: relative;
     width: 90%;
-    max-width: 1200px;
-    background: linear-gradient(to right, #00687F, #ffffff 110%);
+    max-width: 750px;
+    min-width: 215px;
+    background: linear-gradient(to right, #00687F, #ffffff 120%);
     border-radius: 12px;
     padding: 30px;
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow: visible;
+    overflow: hidden;
 }
 
-.step-info h2.step {
+.wow-card.yellow {
+    background: linear-gradient(to right, #FDB71A, #ffffff 120%);
+}
+
+.wow-card.green {
+    background: linear-gradient(to right, #00A887, #ffffff 120%);
+}
+
+.wow-info {
+    color: #fff;
+    font-weight: bold;
+    max-width: 60%;
+}
+
+.wow-card.yellow .wow-info {
+    color: #000;
+}
+
+.wow-info h2.wow-header {
     font-size: 2rem;
-    font-weight: bold;
     margin: 0;
-    color: #fff;
 }
 
-.step-info p.time {
+.wow-info p.wow-time {
     font-size: 14px;
-    font-weight: bold;
     margin: 4px 0 0 0;
-    color: #fff;
 }
 
-.main-content {
+.wow-content {
     width: 80%;
     height: auto;
     background: linear-gradient(to right, #fff -20%, transparent);
@@ -44,21 +59,25 @@ body {
     margin: 10px 0;
 }
 
-.text-section {
+.wow-text-section {
     flex: 1;
 }
 
-.text-section h2 {
+.wow-text-section h2 {
     font-size: 18px;
     margin-bottom: 10px;
 }
 
-.text-section p {
+.wow-text-section p {
     font-size: 16px;
     margin-bottom: 20px;
 }
 
-.pulse-button a {
+.wow-button {
+    z-index: 2;
+}
+
+.wow-button a {
     display: inline-block;
     background-color: #003B4C;
     color: white;
@@ -70,52 +89,75 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
-.pulse-button a:hover {
+.wow-button a:hover {
     transform: scale(1.05);
     background-color: #008EA9;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
 }
 
-.visuals {
+.wow-visuals {
     position: absolute;
     display: block;
-    right: 30px;
+    right: 20px;
+    top: 20px;
 }
 
-.icon-circle {
+.wow-icon-circle {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.icon-circle img {
-    width: 80px;
-    height: 80px;
+.wow-icon-circle img {
+    width: 100px;
+    height: 100px;
+    zoom: 80%;
 }
 
-.person-image img {
+.wow-card-image img {
     display: none;
 }
 
-@media (min-width: 350px) {
-    .icon-circle img {
-        width: 100px;
-        height: 100px;
+.wow-card-image.blue {
+    bottom: -15px;
+    zoom: 120%;
+    right: -30px;
+}
+
+.wow-card-image.yellow {
+    bottom: -90px;
+    zoom: 78%;
+    right: 80px;
+}
+
+.wow-card-image.green {
+    bottom: -64px;
+    zoom: 150%;
+    right: -70px;
+}
+
+@media (min-width: 450px) {
+    .wow-icon-circle img {
+        zoom: 120%;
     }
 }
 
 @media (min-width: 550px) {
 
-    .person-image {
+    .wow-icon-circle img {
+        zoom: 150%;
+    }
+
+    .wow-card-image {
         position: absolute;
         bottom: 0;
         right: 0;
-        z-index: 2;
+        z-index: 1;
         margin: 0;
         padding: 0;
     }
 
-    .person-image img {
+    .wow-card-image img {
         display: block;
         width: 380px;
         height: auto;
@@ -124,12 +166,19 @@ body {
         margin: 0;
         padding: 0;
     }
-    .main-content {
-        width: 50%;
+    .wow-content, .wow-info {
+        width: 45%;
     }
 }
+
+@media (min-width: 660px) {
+    .wow-content, .wow-info {
+        width: 55%
+    }
+}
+
 @media (min-width: 750px) {
-    .main-content {
+    .wow-content, .wow-info {
         width: 60%;
     }
 }
